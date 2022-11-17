@@ -1,0 +1,54 @@
+@font-face                                   /* gather the codec font information from the folder */   
+{
+	font-family:codecfnt;
+	src: url("../fonts/codec.ttf");
+}
+@font-face                                  /* gather the signika font information from the folder */   
+{
+	font-family:sigifnt;
+	src: url("../fonts/signika.otf");
+}
+.sigifntuse                               /* class for signika font, controls size and various properties */   
+{
+	font-family:sigi;
+	font-size:125%;
+	font-weight:bold;
+	color:#000000;
+	font-style:normal; 
+}
+.codecfntuse                              /* class for codec font, controls size and various properties */   
+{
+	font-family:codecfnt;
+	font-size:125%;
+	font-weight:bold;
+	color:#0028BB;
+	font-style:normal;
+}
+p                                              /* controls the text in a <p>  */   
+{
+	font-family: sigifnt;
+	font-size:100%;
+	font-weight:normal;
+	color:#000000;
+	font-style:normal;
+}
+h1                                           /* controls the text in a <h1>*/   
+{
+	text-decoration: underline;
+	font-size:290%;
+	font-weight:bold;
+	color:#000000;
+	font-style:normal;
+}
+h2                                            /* controls the text in a <h2>  */   
+{
+	text-decoration: underline;
+	font-size:190%;
+	font-weight:bold;
+	color:#0028BB;
+	font-style:normal;
+}		
+
+
+	
+	

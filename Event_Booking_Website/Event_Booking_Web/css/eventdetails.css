@@ -1,0 +1,235 @@
+#title                              /* controls the box for the title  */  
+{
+	margin: 0;
+	padding: 0;
+	width: 30%;
+	height: 10%;
+	position: absolute;
+	top:5%;
+	left:40%;	
+}
+
+#titleDet{                     /*  removes background of title boxes*/
+
+	background: none;
+
+}
+#miniTi{                         /*  controls the box of the title*/
+
+	width:30%;
+	margin-left: 35%;
+	background: none;
+	margin-top: -2%;
+}
+
+#miniTiRight{                          /*  controls the boxes of the titles on the right*/
+
+	width:50%;
+	margin-left: 27%;
+	background: none;
+	margin-top: -4.5%;
+}
+ 
+#miniTiLeft{                            /*  controls the boxes of the titles on the left*/
+
+	width:50%;
+	margin-left: 27%;
+	background: none;
+	margin-top: -4.5%;
+}
+#detailsarea                         /*  controls the box for the details area  */
+{
+	text-align: center;
+	margin-left: 16%;
+	margin-top: 3%;
+	background:#fdbdd0 ;
+	width:67%;
+	height:88%;
+	position: absolute;
+	border-radius: 20px;
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	
+
+}
+
+#bookHere{                            /*  controls the div bookHere acting as a button */
+ 
+	margin-top: 40%;
+	background: #be2edd;
+	width: 18%;
+    height:5%;
+    margin-left: 42%;
+    font-size: 18px;
+	border-radius: 5px;
+	position: absolute;
+}
+#bookHere a{                          /*  controls the button's text */
+
+	text-decoration: none;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+
+
+h3                                          /* controls the text in a <h3>*/   
+{
+	font-size:100%;
+	font-weight:normal;
+	font-weight: bold;
+	font-style:normal;
+}
+#detailsType                           /*  controls the box for the Event type  */
+{
+	text-align:center;
+	background: #fff8dc;
+	width: 30%;
+	height:8.5%;
+	margin-left: 15%;
+	margin-top: 15%;
+	border-radius: 15px;
+	border-color: #000000;
+	border-style: solid;
+	position: absolute;
+}
+#detailsName                       /*  controls the box for the Event Name  */
+{ 
+	text-align:center;
+	background: #fff8dc;
+	width: 30%;
+	height:8.5%;
+	margin-left: 55%;
+	margin-top: 15%;
+	border-radius: 15px;
+	border-color: #000000;
+	border-style: solid;
+	position: absolute;
+}
+#detailsOrg                          /*  controls the box for event organiser name */
+{ 
+	text-align:center;
+	background: #fff8dc;
+	width: 70%;
+	height:8%;
+	margin-left: 15%;
+	margin-top: 0%;
+	border-radius: 15px;
+	border-color: #000000;
+	border-style: solid;
+	position:relative;
+	position: absolute;
+}
+#detailsOrgText  {                   /*  controls the text for the organiser box  */
+
+	margin-top: -2%;
+	background: none;
+	border-radius: 15px;
+
+}
+
+#genText  {                             /*  controls text for the details boxes  */        
+
+	margin-top: -2%;
+	background: none;
+	border-radius: 15px;
+
+}
+#detailsDate                          /*  controls the box for the event date  */
+{
+	text-align:center;
+	background: #fff8dc;
+	width: 30%;
+	height:8.5%;
+	margin-left: 15%;
+	border-radius: 15px;
+	margin-top: 21%;
+	border-color: #000000;
+	border-style: solid;
+	position: absolute;
+}
+#detailsEmail                      /*  controls the box for email address */
+{
+	text-align:center;
+	background: #fff8dc;
+	width: 30%;
+	height:8.5%;
+	margin-left: 55%;
+	margin-top: 21%;
+	border-radius: 15px;
+	border-color: #000000;
+	border-style: solid;
+	position: absolute;
+}
+#detailsNumber                     /*  controls the box for the phone number  */
+{
+	text-align:center;
+	background: #fff8dc;
+	width: 30%;
+	height:8.5%;
+	margin-left: 15%;
+	margin-top: 27%;
+	border-radius: 15px;
+	border-color: #000000;
+	border-style: solid;
+	position: absolute;
+}
+#detailsLocation                   /*  controls the box for the event location  */
+{ 
+	text-align:center;
+	background: #fff8dc;
+	width: 30%;
+	height:8.5%;
+	margin-left: 55%;
+	margin-top: 27%;
+	border-radius: 15px;
+	border-color: #000000;
+	border-style: solid;
+	position: absolute;
+}
+#detailsDesc                  /*  controls the box for the event description */
+{
+	text-align:center;
+	background: #fff8dc;
+	width: 70%;
+	height:15.5%;
+	margin-left: 15%;
+	margin-top: 5.5%;
+	border-radius: 15px;
+	border-color: #000000;
+	border-style: solid;
+	position: absolute;
+}
+#detailsDescText{
+
+	background: none;
+	border-radius: 15px;
+	margin-top: -2%;
+}
+
+#detailsStart                      /*  controls the box for the event start time  */
+{
+	text-align:center;
+	background: #fff8dc;
+	width: 30%;
+	height:8.5%;
+	margin-left: 15%;
+	margin-top: 33%;
+	border-radius: 15px;
+	border-color: #000000;
+	border-style: solid;
+	position: absolute;
+}
+#detailsEnd                      /*  controls the box for the event end time */
+{ 
+	text-align:center;
+	background: #fff8dc;
+	width: 30%;
+	height:8.5%;
+	margin-left: 55%;
+	margin-top: 33%;
+	border-radius: 15px;
+	border-color: #000000;
+	border-style: solid;
+	position: absolute;
+}

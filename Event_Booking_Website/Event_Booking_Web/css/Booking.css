@@ -1,0 +1,56 @@
+html,body
+{
+  display: grid;
+}
+.main_div{                 /*  controls the box that contains the booking form */
+  height:25%;
+  width: 370px;
+  background: #fff;
+  margin-top: 250px;
+  margin-left: 38%;
+  padding: 40px;
+  border-radius: 50px;
+  background: #fdbdd0;
+}
+.main_div .title{            /*  controls the box in which title is inside */
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  background: #fdbdd0;
+}
+form {                     /*  controls the form location from the top  */
+  margin-top: 30px;
+}
+form .input_box{           /*  controls the input box */
+  height: 50px;
+  width: 90%;
+  position: relative;
+  margin-top: 15px;
+}
+.input_box input{          /*  controls the input of the input box */
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding-left: 35px;
+  font-size: 17px;
+  transition: all 0.3s ease;
+}
+.input_box input:focus{             /*  controls the input box border color */
+  border-color: #be2edd;
+}
+
+.button input{                      /*  controls input of the button */
+  padding-left: 0;
+  background: #be2edd;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.button input:hover{                   /*  controls the background of the button at pointer hover */
+  background: #a720c5;
+}

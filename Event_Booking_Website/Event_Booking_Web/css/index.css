@@ -1,0 +1,155 @@
+#container                      /* creates the main box that contains everything */                 
+{
+	margin: 0;
+	padding: 0;
+	background-color: grey;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top:0;
+	left:0;	
+}
+#toparea                            /* creates the box for the topside  */  
+{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 10%;
+	background: #fffdd0;
+	position: absolute;
+		
+}
+#logo                             /* controls the box for the logo */
+{
+	background: #fffdd0;
+	width:100%;
+	height: 100%;
+	position: absolute;
+	
+	
+}
+#logo img                                  /* controls the image in the logo box */
+{
+	margin-top: 0%;
+	padding: 0;
+	width:20%;
+	height: 100%;
+	position: absolute;	
+
+}
+#navbar                                   /* controls the box for the navigation bar */    
+{
+	margin:10;
+	padding: 10;
+	background: #e1e1e1;
+	width: 22%;
+	height: 30%;
+	border-radius: 5px;
+	position: absolute;
+	top:53%;
+	left:38%;	
+	font-size:140%;	
+    opacity: 0.7;
+    border-style: solid;
+    border-color: : #000000;
+}
+
+#homepage{                                 /* controls the box for the homepage link in the navigation bar */       
+	margin-left: 0%;
+	background: #e1e1e1;
+	width:33%;
+	height: 100%;
+	position: absolute;
+	text-align: center;
+
+	
+}
+
+#homepage a{                            /* controls the text contained in a in the homepage box */ 
+
+	text-decoration: none;
+	color:#000000;
+}
+#homepage:hover{                       /* controls the background of the homepage box when hover */ 
+	background: #feff62;
+}
+#logout{                                /* controls the box for the logout link in the navigation bar */ 
+	margin-top:0%;
+    margin-left: 67%;
+	background: #e1e1e1;
+	width:33%;
+	height: 100%;
+	position: absolute;
+	text-align: center;
+}
+
+#logout a{                           /* controls the text contained in a in the logout box */ 
+	color:#000000;
+	text-decoration: none
+}
+#logout:hover{                          /* controls the background of the logout box when hover */ 
+	background: #feff62;
+}
+#events{                              /* controls the box for the events link in the navigation bar */ 
+	margin-top:0%; 
+    margin-left: 33%;
+	background: #e1e1e1;
+	width:34%;
+	height: 100%;
+	position: absolute;
+	text-align: center;
+}
+
+#events a{                           /* controls the text contained in a in the events box */ 
+	color:#000000;
+	text-decoration: none
+}
+#events:hover{                         /* controls the background of the events box when hover */ 
+	background: #feff62;
+}
+#midarea                                 /* creates a box for the middle area of the page*/ 
+
+{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 85%;
+	position: absolute;
+	top:10%;
+	left:0%;
+		
+}
+
+#botarea                           /* creates box for the bottom area */ 
+{
+		
+	width: 100%;
+	height: 5%;
+	position: absolute;
+	bottom: 0%;
+	right: 0%;
+}	
+
+#footer                      /*creates the box for the copyright declaration and position it */ 
+{
+
+	position: absolute;
+	bottom: 0.001%;
+	text-align: center;
+	width:100%;
+	background:  #fffdd0;
+	
+}
+
+#footer p                      /*  controls the p tag in the footer */
+{
+
+	font-weight: bold;
+}
+
+#eresult{
+	margin-top: 6%;
+    background: #ffffff;
+    border-radius: 5px;
+
+  }

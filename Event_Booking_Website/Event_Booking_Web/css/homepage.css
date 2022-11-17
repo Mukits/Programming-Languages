@@ -1,0 +1,45 @@
+#textarea                          /* controls the box that contains the text */ 
+{
+	margin: 0;
+	padding: 0;
+	background: #f6688e;
+	margin-top: 6%;
+	width: 46%;
+	height: 40%;
+	border-radius: 10px;
+	margin-left: 25%;
+	top:1%;
+	left:30%;
+	border-color: #000000;
+	border-style:solid;
+}
+#textarea h4                         /* controls the h4 used in the text area */ 
+{         
+	text-align: center;
+	text-decoration: underline;
+	font-size:190%;
+	font-weight:bold;
+	font-style:normal;
+}		
+#textarea p                 /* controls the p tag used in the text area */ 
+{
+	font-weight:bold;
+	text-align: center;
+}
+
+#textHome{                  /* eliminates background for the text div */ 
+
+
+
+	background: none;
+}
+
+
+
+
+
+	
+
+
+
+

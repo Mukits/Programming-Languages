@@ -1,0 +1,83 @@
+html,body 
+{
+  display: grid;
+}
+.main_div                            /* controls the box that contain the login form */ 
+{
+  height:40%;
+  width: 25%;
+  margin-top: 10%;
+  margin-left: 38%;
+  padding: 2%;
+  border-radius: 50px;
+  background: #f6688e;
+  border-color: #000000;
+  border-style: solid;
+
+}
+.main_div .title                  /*  controls the box in which title is inside */ 
+{
+  height:10%;
+  width: :2%;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  background: #f6688e;
+}
+form                             /* controls positioning of the form*/ 
+{ 
+  margin-top: 8%;
+}
+form .input_box                /*  controls the input box */ 
+{
+  height: 50px;
+  width: 90%;
+  position: relative;
+  margin-top: 15px;
+}
+.input_box input               /* controls input of the input box */ 
+{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding-left: 35px;
+  font-size: 17px;
+  transition: all 0.3s ease;
+}
+.input_box input:focus              /*  controls the input box border color */
+{
+  border-color: #be2edd;
+}
+
+.button input                       /*  controls input of the button */
+{
+  padding-left: 0;
+  background: #82dbcc;
+  color: #000000;
+  border: none;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.button input:hover               /*  controls the background of the button at pointer hover */
+{
+  background: #00b092;
+}
+
+#notreg                              /*  controls the box where link to register page is contained */                           
+{
+ background: #f6688e;
+ width:99%;
+ heigth:2%;
+}
+
+#notreg a:hover                   /*  controls the color of the a tags inside notreg on hover */
+{
+ background: #82dbcc;
+ 
+}
+
+
