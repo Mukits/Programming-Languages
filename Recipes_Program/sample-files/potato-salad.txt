@@ -1,0 +1,11 @@
+OOPRecipe 1.0
+Potato Salad
+Good mayonnaise
+Potatoes
+Tuna
+Chives
+Roasted peppers
+__INSTRUCTIONS__
+Basically I'm just making potato salad.
+I haven't decided what kind yet.
+

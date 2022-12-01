@@ -1,0 +1,468 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>uk.ac.aston.oop</groupId>
+  <artifactId>uk.ac.aston.oop.recipes</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <name>Recipe book app</name>
+  <url>http://www.aston.ac.uk</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
+    <autofeedback.version>0.4.1</autofeedback.version>
+    <ecj.version>3.23.0</ecj.version>
+    <gson.version>2.8.6</gson.version>
+    <javafx.version>11</javafx.version>
+    <junit.version>5.7.0</junit.version>
+    <testfx.version>4.0.16-alpha</testfx.version>
+    <argLine></argLine>
+  </properties>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>gitlab-maven</id>
+      <url>https://gitlab.com/api/v4/projects/21460324/packages/maven</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>${junit.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-controls</artifactId>
+      <version>${javafx.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-fxml</artifactId>
+      <version>${javafx.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>${gson.version}</version>
+    </dependency>    
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.vintage</groupId>
+      <artifactId>junit-vintage-engine</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.dom4j</groupId>
+      <artifactId>dom4j</artifactId>
+      <version>2.1.3</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>jaxen</groupId>
+      <artifactId>jaxen</artifactId>
+      <version>1.2.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.javaparser</groupId>
+      <artifactId>javaparser-core</artifactId>
+      <version>3.18.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.testfx</groupId>
+      <artifactId>testfx-core</artifactId>
+      <version>${testfx.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.testfx</groupId>
+      <artifactId>testfx-junit5</artifactId>
+      <version>${testfx.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest</artifactId>
+      <version>2.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.testfx</groupId>
+      <artifactId>openjfx-monocle</artifactId>
+      <version>jdk-11+26</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.openjfx</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <!-- Match the Eclipse style to keep things consistent for students -->
+    <sourceDirectory>src</sourceDirectory>
+    <testSourceDirectory>src-test</testSourceDirectory>
+    <resources>
+      <resource>
+        <directory>resources</directory>
+        <filtering>false</filtering>
+      </resource>
+      <resource>
+        <directory>sample-files</directory>
+        <excludes>
+        	<exclude>**</exclude>
+        </excludes>
+      </resource>
+    </resources>
+
+    <plugins>
+      <plugin>
+        <groupId>uk.ac.aston.autofeedback</groupId>
+        <artifactId>autofeedback-maven-plugin</artifactId>
+        <version>${autofeedback.version}</version>
+        <configuration>
+          <serverUrl>https://autofeedback.cs2410-web01pvm.aston.ac.uk</serverUrl>
+          <assessment>14</assessment>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.7.1</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>3.1.1</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <!-- NOTE: with Surefire 2.x we don't capture stdout/stderr per test!
+             Might need at some point to scan POMs for this type of issue. -->
+        <version>3.0.0-M5</version>
+
+        <!-- Divide test executions to make it more robust against bad code -->
+        <executions>
+          <execution>
+            <id>default-test</id>
+            <phase>test</phase>
+            <configuration>
+              <includes>
+                <include>**/RecipesControllerTest.java</include>
+              </includes>
+            </configuration>
+          </execution>
+          <execution>
+            <id>test-reflection</id>
+            <phase>test</phase>
+            <goals><goal>test</goal></goals>
+            <configuration>
+              <includes>
+                <include>**/RecipeFormatTest.java</include>
+                <include>**/RecipeExceptionTest.java</include>
+              </includes>
+            </configuration>
+          </execution>
+          <execution>
+            <id>test-formats</id>
+            <phase>test</phase>
+            <goals><goal>test</goal></goals>
+            <configuration>
+              <includes>
+                <include>**/JSONRecipeFormatTest.java</include>
+                <include>**/TextRecipeFormatTest.java</include>
+              </includes>
+            </configuration>
+          </execution>
+        </executions>
+
+        <configuration>
+          <!--
+              Add necessary flags to turn on headless JavaFX testing.
+              @{argLine} is needed to allow AutoFeedback to inject its own options.
+          -->
+          <argLine>@{argLine} --add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED --add-opens javafx.graphics/com.sun.glass.ui=ALL-UNNAMED -Djava.awt.headless=true -Dtestfx.robot=glass -Dtestfx.headless=true -Dprism.order=sw</argLine>
+
+          <!--
+              Keep going even if one of the test executions fails (to provide more feedback).
+          -->
+          <testFailureIgnore>true</testFailureIgnore>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.2.0</version>
+        <configuration>
+          <javadocExecutable>${javadocExecutable}</javadocExecutable>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <version>0.0.5</version>
+        <configuration>
+          <mainClass>uk.ac.aston.oop.recipes.Main</mainClass>
+        </configuration>
+      </plugin>
+    </plugins>
+
+    <pluginManagement>
+      <plugins>
+        <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>
+                      exec-maven-plugin
+                    </artifactId>
+                    <versionRange>
+                      [3.0.0,)
+                    </versionRange>
+                    <goals>
+                      <goal>exec</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>
+                      org.apache.maven.plugins
+                    </groupId>
+                    <artifactId>
+                      maven-dependency-plugin
+                    </artifactId>
+                    <versionRange>
+                      [3.1.2,)
+                    </versionRange>
+                    <goals>
+                      <goal>build-classpath</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <!--
+      These profiles are needed in order to have Javadoc work on Macs. There is
+      a fix already in m-javadoc-p but it is not available from any stable
+      release yet:
+
+      https://github.com/apache/maven-javadoc-plugin/commit/4bf64b02
+  -->
+  <profiles>
+    <profile>
+      <id>jdk-8-config</id>
+      <activation>
+        <jdk>1.8</jdk>
+      </activation>
+      <properties>
+        <javadocExecutable>${java.home}/../bin/javadoc</javadocExecutable>
+      </properties>
+    </profile>
+    <profile>
+      <id>jdk-11-config</id>
+      <activation>
+        <jdk>[11,16]</jdk>
+      </activation>
+      <properties>
+        <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
+      </properties>
+    </profile>
+
+    <!-- AutoFeedback ECJ dark magicks go here! -->
+    <profile>
+      <id>autofeedback</id>
+      <activation>
+        <property>
+          <name>env.AUTOFEEDBACK</name>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <version>3.1.2</version>
+            <executions>
+              <execution>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>build-classpath</goal>
+                </goals>
+                <configuration>
+                  <outputProperty>maven.compile.classpath</outputProperty>
+                  <pathSeparator>:</pathSeparator>
+
+                  <!-- Need to exclude the platform-specific modules -->
+                  <excludeClassifiers>linux</excludeClassifiers>
+
+                  <!-- Need to exclude Gson from the classpath as well -->
+                  <excludeGroupIds>com.google.code.gson</excludeGroupIds>
+
+                  <!-- No need to print out the computed classpath -->
+                  <silent>true</silent>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>3.0.0</version>
+            <executions>
+              <execution>
+                <id>run-ecj-sources</id>
+                <phase>compile</phase>
+                <goals>
+                  <goal>exec</goal>
+                </goals>
+
+                <configuration>
+                  <executable>${java.home}/bin/java</executable>
+                  <arguments>
+                    <argument>-jar</argument>
+                    <argument>${settings.localRepository}/org/eclipse/jdt/ecj/${ecj.version}/ecj-${ecj.version}.jar</argument>
+                    <argument>-noExit</argument>
+                    <argument>-source</argument>
+                    <argument>${maven.compiler.source}</argument>
+                    <argument>-target</argument>
+                    <argument>${maven.compiler.target}</argument>
+                    <argument>-encoding</argument>
+                    <argument>${project.build.sourceEncoding}</argument>
+                    <argument>-proceedOnError</argument>
+                    <argument>-proceedOnError:Fatal</argument>
+                    <argument>-properties</argument>
+                    <argument>${project.basedir}/.settings/org.eclipse.jdt.core.prefs</argument>
+                    <argument>-d</argument>
+                    <argument>${project.build.outputDirectory}</argument>
+                    <argument>--module-path</argument>
+                    <argument>${settings.localRepository}/org/openjfx/javafx-controls/${javafx.version}:${settings.localRepository}/org/openjfx/javafx-graphics/${javafx.version}:${settings.localRepository}/org/openjfx/javafx-base/${javafx.version}:${settings.localRepository}/org/openjfx/javafx-fxml/${javafx.version}:${settings.localRepository}/com/google/code/gson/gson/${gson.version}</argument>
+                    <argument>-classpath</argument>
+                    <argument>${maven.compile.classpath}</argument>
+                    <argument>${project.build.sourceDirectory}</argument>
+                  </arguments>
+                </configuration>
+              </execution>
+
+              <execution>
+                <id>run-ecj-testSources</id>
+                <phase>test-compile</phase>
+                <goals>
+                  <goal>exec</goal>
+                </goals>
+
+                <configuration>
+                  <executable>${java.home}/bin/java</executable>
+                  <arguments>
+                    <argument>-jar</argument>
+                    <argument>${settings.localRepository}/org/eclipse/jdt/ecj/${ecj.version}/ecj-${ecj.version}.jar</argument>
+                    <argument>-noExit</argument>
+                    <argument>-source</argument>
+                    <argument>${maven.compiler.source}</argument>
+                    <argument>-target</argument>
+                    <argument>${maven.compiler.target}</argument>
+                    <argument>-encoding</argument>
+                    <argument>${project.build.sourceEncoding}</argument>
+                    <argument>-proceedOnError</argument>
+                    <argument>-proceedOnError:Fatal</argument>
+                    <argument>-properties</argument>
+                    <argument>${project.basedir}/.settings/org.eclipse.jdt.core.prefs</argument>
+                    <argument>-d</argument>
+                    <argument>${project.build.testOutputDirectory}</argument>
+                    <argument>--module-path</argument>
+                    <argument>${settings.localRepository}/org/openjfx/javafx-controls/${javafx.version}:${settings.localRepository}/org/openjfx/javafx-graphics/${javafx.version}:${settings.localRepository}/org/openjfx/javafx-base/${javafx.version}:${settings.localRepository}/org/openjfx/javafx-fxml/${javafx.version}:${settings.localRepository}/com/google/code/gson/gson/${gson.version}</argument>
+                    <argument>-classpath</argument>
+                    <argument>${maven.compile.classpath}:${project.build.outputDirectory}</argument>
+                    <argument>${project.build.testSourceDirectory}</argument>
+                  </arguments>
+                </configuration>
+              </execution>
+            </executions>
+            <dependencies>
+              <dependency>
+                <groupId>org.eclipse.jdt</groupId>
+                <artifactId>ecj</artifactId>
+                <version>${ecj.version}</version>
+              </dependency>
+            </dependencies>
+          </plugin>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+
+            <!--
+                Cannot use ECJ directly with plexus-compiler-eclipse for modular
+                projects at the moment. We use exec-maven-plugin instead (ugly, but
+                it works). We need to disable the default executions so they do not
+                interfere with ECJ.
+
+                NOTE: we cannot disable them from the regular configuration, because
+                then the project would not compile from Eclipse if using m2e.
+            -->
+            <executions>
+              <execution>
+                <id>default-compile</id>
+                <phase>none</phase>
+              </execution>
+              <execution>
+                <id>default-testCompile</id>
+                <phase>none</phase>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+</project>

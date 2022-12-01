@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.HBox?>
+
+
+<HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <VBox alignment="CENTER" spacing="5.0" HBox.hgrow="NEVER">
+         <children>
+            <ListView fx:id="listRecipes" minWidth="300.0" prefWidth="300.0" VBox.vgrow="ALWAYS" />
+            <HBox alignment="CENTER" spacing="5.0">
+               <children>
+                  <Button onAction="#addPressed" text="_Add" />
+                  <Button fx:id="btnRemove" onAction="#removePressed" text="_Remove" />
+                  <Button onAction="#loadPressed" text="_Load..." />
+                  <Button fx:id="btnSave" onAction="#savePressed" text="_Save..." />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <GridPane hgap="5.0" vgap="5.0" HBox.hgrow="ALWAYS">
+        <columnConstraints>
+          <ColumnConstraints hgrow="NEVER" minWidth="120.0" prefWidth="120.0" />
+          <ColumnConstraints hgrow="SOMETIMES" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="60.0" vgrow="NEVER" />
+          <RowConstraints minHeight="60.0" vgrow="NEVER" />
+          <RowConstraints minHeight="60.0" vgrow="SOMETIMES" />
+          <RowConstraints vgrow="NEVER" />
+          <RowConstraints minHeight="200.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Name:" />
+            <Label text="Cooking time (minutes):" wrapText="true" GridPane.rowIndex="1" />
+            <Slider fx:id="sliderCookMinutes" majorTickUnit="30.0" max="180.0" minorTickCount="2" prefWidth="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtName" promptText="Type name here" GridPane.columnIndex="1" />
+            <Label text="Ingredients:" GridPane.rowIndex="2" />
+            <TextArea fx:id="txtIngredients" minWidth="200.0" prefHeight="200.0" prefWidth="400.0" promptText="Type the ingredients here" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextArea fx:id="txtInstructions" minWidth="200.0" prefHeight="400.0" prefWidth="400.0" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+            <Label text="Instructions:" GridPane.rowIndex="3" />
+         </children>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+      </GridPane>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</HBox>
