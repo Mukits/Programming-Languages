@@ -1,0 +1,12 @@
+@startuml
+
+class BestOf {
+	- items: List<Comparable>
+	- maxItems: int
+	+ BestOf(maxItems: int)
+	+ getItems(): List<Comparable>
+	+ add(c: Comparable)
+	+ {static} void main(args: String[])
+}
+
+@enduml

@@ -1,0 +1,41 @@
+@startuml
+
+class MenuOption {
+	+ MenuOption(description: String, command: Callable<Boolean>)
+	+ getDescription(): String
+	+ getCommand(): Callable<Boolean>
+}
+
+class ToDoList #Aquamarine {
+	+ iterator(): Iterator<ToDoItem>
+	+ isEmpty(): boolean
+	+ add(ToDoItem toDoItem)
+	+ size(): int
+	+ markDone(i: int)
+	+ remove(i: int)
+	+ removeAllContaining(substring: String)
+	+ removeAllDone()
+	+ moveToTop(i: int)
+	+ shuffle(Random rnd)
+}
+
+note top of ToDoList : Complete the empty methods here
+
+ToDoList *--> "*" ToDoItem : items
+
+class ToDoMain [[java:uk.ac.aston.oop.jcf.todo.ToDoMain]] {
+	+ run()
+	+ {static} void main(String[] args)
+}
+
+ToDoMain .-> MenuOption : creates
+ToDoMain .> ToDoList : creates
+
+class ToDoItem [[java:uk.ac.aston.oop.jcf.todo.ToDoItem]] {
+	+ToDoItem(description: String)
+	+ isDone(): boolean
+	+ setDone(done: boolean)
+	+ getDescription(): String
+}
+
+@enduml
