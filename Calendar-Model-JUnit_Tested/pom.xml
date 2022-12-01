@@ -1,0 +1,124 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>uk.ac.aston.oop</groupId>
+  <artifactId>uk.ac.aston.oop.calendar</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <name>TDD with Calendar</name>
+  <url>http://www.aston.ac.uk</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
+    <autofeedback.version>0.4.1</autofeedback.version>
+    <junit.version>5.7.0</junit.version>
+  </properties>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>gitlab-maven</id>
+      <url>https://gitlab.com/api/v4/projects/21460324/packages/maven</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>${junit.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.vintage</groupId>
+	  <artifactId>junit-vintage-engine</artifactId>
+	  <scope>test</scope>
+	</dependency>
+  </dependencies>
+
+  <build>
+    <!-- Match the Eclipse style to keep things consistent for students -->
+  	<sourceDirectory>src</sourceDirectory>
+  	<testSourceDirectory>src-test</testSourceDirectory>
+
+    <plugins>
+      <plugin>
+        <groupId>uk.ac.aston.autofeedback</groupId>
+        <artifactId>autofeedback-maven-plugin</artifactId>
+        <version>${autofeedback.version}</version>
+        <configuration>
+          <serverUrl>https://autofeedback.cs2410-web01pvm.aston.ac.uk</serverUrl>
+          <assessment>2</assessment>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.7.1</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>3.1.1</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <!-- NOTE: with Surefire 2.x we don't capture stdout/stderr per test!
+             Might need at some point to scan POMs for this type of issue. -->
+        <version>3.0.0-M5</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+
+        <configuration>
+          <compilerId>eclipse</compilerId>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.source}</target>
+
+          <!-- Passing arguments is complicated, see https://issues.apache.org/jira/browse/MCOMPILER-123 -->
+          <compilerArguments>
+            <properties>${project.basedir}/.settings/org.eclipse.jdt.core.prefs</properties>
+          </compilerArguments>
+          <showWarnings>true</showWarnings>
+          <showDeprecation>true</showDeprecation>
+
+          <!-- Try to run tests even if compilation fails (like in Eclipse) -->
+          <failOnError>false</failOnError>
+        </configuration>
+
+        <dependencies>
+          <dependency>
+            <groupId>org.codehaus.plexus</groupId>
+            <artifactId>plexus-compiler-eclipse</artifactId>
+            <version>2.8.8</version>
+          </dependency>
+
+          <dependency>
+            <groupId>org.eclipse.jdt</groupId>
+            <artifactId>ecj</artifactId>
+            <version>3.23.0</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>
