@@ -1,0 +1,50 @@
+@startuml
+
+title Media Library
+
+package uk.ac.aston.oop.uml.media {
+
+abstract class Item {
+  + Item(title: String, playMinutes: int)
+  + getComment(): String
+  + setComment(c: String)
+  + isOwned(): boolean
+  + setOwned(o: boolean)
+  + getPlayMinutes()
+  + toString(): String
+}
+
+class Video extends Item {
+  + Video(title: String, director: String, playMinutes: int)
+  + getDirector(): String
+  + toString(): String
+}
+
+class CD extends Item {
+  + CD(title: String, artist: String, nTracks: int, playMinutes: int)
+  + getArtist(): String
+  + getNumberOfTracks(): int
+  + toString(): String
+}
+
+class Database {
+  + Database()
+  + addItem(i: Item)
+  + print()
+  + {static} main(args: String[])
+}
+
+note left of Database : print() should loop over all\nitems and print them to\nSystem.out.\n\nMain method should create\na Database, add a few items\nand call print()
+
+note right of Item : title is separate from comment. Only way\nto get the title is through toString().\n\nBy default, an item is not owned\nand has an empty string for a comment.\n\ntoString() should return "title: playMinutes - comment",\nwith a '*' at the beginning if it is owned
+
+note bottom of CD : toString() should return\n"Artist: artist. Number of tracks: N.\\n" + what Item::toString() returned
+
+note bottom of Video : toString() should return\n"Director: director.\\n" + what Item::toString() returned
+
+}
+
+Database *- "*" Item: contains
+
+
+@enduml

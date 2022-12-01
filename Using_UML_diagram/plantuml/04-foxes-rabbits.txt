@@ -1,0 +1,61 @@
+@startuml
+
+title Foxes and Rabbits
+
+abstract class Animal {
+  + act(r: Random)
+  # breed(r: Random)
+  + getAge(): int
+  + {abstract} getLifespan(): int
+  + {abstract} getMaxLitterSize(): int
+  + isAlive(): boolean
+  + setAlive(alive: boolean)
+}
+
+class Fox extends Animal {
+  + act(r: Random)
+}
+
+class Rabbit extends Animal {
+  + act(r: Random)
+}
+
+class Grid {
+  + getWidth(): int
+  + getHeight(): int
+  + get(i: int, j: int): GridCell
+}
+
+class GridCell {
+  + getContents(): List<Animal>
+  + getRow(): int
+  + getColumn(): int
+  + getGrid(): Grid
+  + getAdjacent(): List<GridCell>
+  + getFreeAdjacent(): List<GridCell>
+  + getRandomFreeAdjacent(r: Random): GridCell
+}
+
+class Field {
+  + getGrid(): Grid
+  + getContents(): List<Animal>
+  + getCount(c: Class): int
+}
+
+class Simulator {
+  + act()
+  + getField(): Field
+  + getFoxProbability(): double
+  + getRabbitProbability(): double
+  + getStep(): int
+  + populate()
+  + setFoxProbability(p: double)
+  + setRabbitProbability(p: double)
+}
+
+Simulator *- Field: simulates
+Field *- Grid: grid
+Grid *-down- "1..*" GridCell: cells
+GridCell o-down- "*" Animal: contents
+
+@enduml

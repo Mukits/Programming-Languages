@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><XMI xmlns:UML="href://org.omg/UML/1.3" xmi.version="1.1">
+    <XMI.header>
+        <XMI.metamodel xmi.name="UML" xmi.version="1.3"/>
+    </XMI.header>
+    <XMI.content>
+        <UML:Model name="PlantUML" xmi.id="model1">
+            <UML:Namespace.ownedElement>
+                <UML:Class name="Animal" namespace="model1" xmi.id="cl0002">
+                    <UML:Classifier.feature>
+                        <UML:Attribute name="name: String" visibility="private" xmi.id="att6"/>
+                        <UML:Operation name="getName(): String" visibility="public" xmi.id="att7"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Class name="Dog" namespace="model1" xmi.id="cl0003">
+                    <UML:Classifier.feature>
+                        <UML:Attribute name="hasBone: Boolean" visibility="private" xmi.id="att8"/>
+                        <UML:Operation name="giveBone(b: Bone)" visibility="public" xmi.id="att9"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Class name="Bone" namespace="model1" xmi.id="cl0005">
+                    <UML:Classifier.feature/>
+                </UML:Class>
+                <UML:Generalization child="cl0003" name="" namespace="model1" parent="cl0002" xmi.id="ass10"/>
+            </UML:Namespace.ownedElement>
+        </UML:Model>
+    </XMI.content>
+</XMI>

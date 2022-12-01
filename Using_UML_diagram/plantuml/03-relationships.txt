@@ -1,0 +1,17 @@
+@startuml
+
+title Relationships
+
+class Lecturer
+class Student
+Lecturer "1..*"  -down- "*"  Student: teaches
+
+class Window
+class Frame
+Window *-down- Frame: has
+
+class Room
+class Wall
+Room "*" o-down- "3..*" Wall: is formed of
+
+@enduml

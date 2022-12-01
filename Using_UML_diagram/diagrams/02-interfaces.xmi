@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><XMI xmlns:UML="href://org.omg/UML/1.3" xmi.version="1.1">
+    <XMI.header>
+        <XMI.metamodel xmi.name="UML" xmi.version="1.3"/>
+    </XMI.header>
+    <XMI.content>
+        <UML:Model name="PlantUML" xmi.id="model1">
+            <UML:Namespace.ownedElement>
+                <UML:Class isInterface="true" name="Iterable" namespace="model1" xmi.id="cl0011">
+                    <UML:Classifier.feature>
+                        <UML:Operation name="iterator(): Iterator" visibility="public" xmi.id="att16"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Class isInterface="true" name="Collection" namespace="model1" xmi.id="cl0012">
+                    <UML:Classifier.feature>
+                        <UML:Operation name="clear()" visibility="public" xmi.id="att17"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Class isAbstract="true" name="AbstractList" namespace="model1" xmi.id="cl0014">
+                    <UML:Classifier.feature>
+                        <UML:Attribute name="size: int" visibility="private" xmi.id="att18"/>
+                        <UML:Operation name="size(): int" visibility="public" xmi.id="att19"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Generalization child="cl0012" name="" namespace="model1" parent="cl0011" xmi.id="ass20"/>
+                <UML:Generalization child="cl0014" name="" namespace="model1" parent="cl0012" xmi.id="ass21"/>
+            </UML:Namespace.ownedElement>
+        </UML:Model>
+    </XMI.content>
+</XMI>

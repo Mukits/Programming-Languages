@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><XMI xmlns:UML="href://org.omg/UML/1.3" xmi.version="1.1">
+    <XMI.header>
+        <XMI.metamodel xmi.name="UML" xmi.version="1.3"/>
+    </XMI.header>
+    <XMI.content>
+        <UML:Model name="PlantUML" xmi.id="model1">
+            <UML:Namespace.ownedElement>
+                <UML:Class isAbstract="true" name="Animal" namespace="model1" xmi.id="cl0040">
+                    <UML:Classifier.feature>
+                        <UML:Operation name="act(r: Random)" visibility="public" xmi.id="att53"/>
+                        <UML:Operation name="breed(r: Random)" visibility="protected" xmi.id="att54"/>
+                        <UML:Operation name="getAge(): int" visibility="public" xmi.id="att55"/>
+                        <UML:Operation name="getLifespan(): int" visibility="public" xmi.id="att56"/>
+                        <UML:Operation name="getMaxLitterSize(): int" visibility="public" xmi.id="att57"/>
+                        <UML:Operation name="isAlive(): boolean" visibility="public" xmi.id="att58"/>
+                        <UML:Operation name="setAlive(alive: boolean)" visibility="public" xmi.id="att59"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Class name="Fox" namespace="model1" xmi.id="cl0041">
+                    <UML:Classifier.feature>
+                        <UML:Operation name="act(r: Random)" visibility="public" xmi.id="att60"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Class name="Rabbit" namespace="model1" xmi.id="cl0043">
+                    <UML:Classifier.feature>
+                        <UML:Operation name="act(r: Random)" visibility="public" xmi.id="att61"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Class name="Grid" namespace="model1" xmi.id="cl0045">
+                    <UML:Classifier.feature>
+                        <UML:Operation name="getWidth(): int" visibility="public" xmi.id="att62"/>
+                        <UML:Operation name="getHeight(): int" visibility="public" xmi.id="att63"/>
+                        <UML:Operation name="get(i: int, j: int): GridCell" visibility="public" xmi.id="att64"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Class name="GridCell" namespace="model1" xmi.id="cl0046">
+                    <UML:Classifier.feature>
+                        <UML:Operation name="getContents(): List&lt;Animal&gt;" visibility="public" xmi.id="att65"/>
+                        <UML:Operation name="getRow(): int" visibility="public" xmi.id="att66"/>
+                        <UML:Operation name="getColumn(): int" visibility="public" xmi.id="att67"/>
+                        <UML:Operation name="getGrid(): Grid" visibility="public" xmi.id="att68"/>
+                        <UML:Operation name="getAdjacent(): List&lt;GridCell&gt;" visibility="public" xmi.id="att69"/>
+                        <UML:Operation name="getFreeAdjacent(): List&lt;GridCell&gt;" visibility="public" xmi.id="att70"/>
+                        <UML:Operation name="getRandomFreeAdjacent(r: Random): GridCell" visibility="public" xmi.id="att71"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Class name="Field" namespace="model1" xmi.id="cl0047">
+                    <UML:Classifier.feature>
+                        <UML:Operation name="getGrid(): Grid" visibility="public" xmi.id="att72"/>
+                        <UML:Operation name="getContents(): List&lt;Animal&gt;" visibility="public" xmi.id="att73"/>
+                        <UML:Operation name="getCount(c: Class): int" visibility="public" xmi.id="att74"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Class name="Simulator" namespace="model1" xmi.id="cl0048">
+                    <UML:Classifier.feature>
+                        <UML:Operation name="act()" visibility="public" xmi.id="att75"/>
+                        <UML:Operation name="getField(): Field" visibility="public" xmi.id="att76"/>
+                        <UML:Operation name="getFoxProbability(): double" visibility="public" xmi.id="att77"/>
+                        <UML:Operation name="getRabbitProbability(): double" visibility="public" xmi.id="att78"/>
+                        <UML:Operation name="getStep(): int" visibility="public" xmi.id="att79"/>
+                        <UML:Operation name="populate()" visibility="public" xmi.id="att80"/>
+                        <UML:Operation name="setFoxProbability(p: double)" visibility="public" xmi.id="att81"/>
+                        <UML:Operation name="setRabbitProbability(p: double)" visibility="public" xmi.id="att82"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Generalization child="cl0041" name="" namespace="model1" parent="cl0040" xmi.id="ass83"/>
+                <UML:Generalization child="cl0043" name="" namespace="model1" parent="cl0040" xmi.id="ass84"/>
+                <UML:Association name="simulates" namespace="model1" xmi.id="ass85">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd aggregation="composite" association="ass85" type="cl0048" xmi.id="end86">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass85" type="cl0047" xmi.id="end87">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="grid" namespace="model1" xmi.id="ass88">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd aggregation="composite" association="ass88" type="cl0047" xmi.id="end89">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass88" type="cl0045" xmi.id="end90">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="cells" namespace="model1" xmi.id="ass91">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd aggregation="composite" association="ass91" type="cl0045" xmi.id="end92">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass91" name="1..*" type="cl0046" xmi.id="end93">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="contents" namespace="model1" xmi.id="ass94">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd aggregation="aggregate" association="ass94" type="cl0046" xmi.id="end95">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass94" name="*" type="cl0040" xmi.id="end96">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+            </UML:Namespace.ownedElement>
+        </UML:Model>
+    </XMI.content>
+</XMI>
