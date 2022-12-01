@@ -1,0 +1,158 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>uk.ac.aston.oop</groupId>
+  <artifactId>uk.ac.aston.oop.inheritance</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <name>Inheritance lab</name>
+  <url>http://www.aston.ac.uk</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
+    <autofeedback.version>0.4.1</autofeedback.version>
+    <junit.version>5.7.0</junit.version>
+    <javafx.version>11</javafx.version>
+  </properties>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>gitlab-maven</id>
+      <url>https://gitlab.com/api/v4/projects/21460324/packages/maven</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>${junit.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.vintage</groupId>
+      <artifactId>junit-vintage-engine</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>3.7.7</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.javaparser</groupId>
+      <artifactId>javaparser-core</artifactId>
+      <version>3.18.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-controls</artifactId>
+      <version>${javafx.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <!-- Match the Eclipse style to keep things consistent for students -->
+    <sourceDirectory>src</sourceDirectory>
+    <testSourceDirectory>src-test</testSourceDirectory>
+
+    <plugins>
+      <plugin>
+        <groupId>uk.ac.aston.autofeedback</groupId>
+        <artifactId>autofeedback-maven-plugin</artifactId>
+        <version>${autofeedback.version}</version>
+        <configuration>
+          <serverUrl>https://autofeedback.cs2410-web01pvm.aston.ac.uk</serverUrl>
+          <assessment>4</assessment>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.7.1</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>3.1.1</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <!-- NOTE: with Surefire 2.x we don't capture stdout/stderr per test!
+             Might need at some point to scan POMs for this type of issue. -->
+        <version>3.0.0-M5</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <!-- Cannot use ECJ - not compatible with javafx-maven-plugin -->
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.2.0</version>
+        <configuration>
+          <javadocExecutable>${javadocExecutable}</javadocExecutable>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <version>0.0.5</version>
+        <configuration>
+          <mainClass>uk.ac.aston.oop.inheritance.Launcher</mainClass>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <!--
+      These profiles are needed in order to have Javadoc work on Macs. There is
+      a fix already in m-javadoc-p but it is not available from any stable
+      release yet:
+
+      https://github.com/apache/maven-javadoc-plugin/commit/4bf64b02
+  -->
+  <profiles>
+    <profile>
+      <id>jdk-8-config</id>
+      <activation>
+        <jdk>1.8</jdk>
+      </activation>
+      <properties>
+        <javadocExecutable>${java.home}/../bin/javadoc</javadocExecutable>
+      </properties>
+    </profile>
+    <profile>
+      <id>jdk-11-config</id>
+      <activation>
+        <jdk>11</jdk>
+      </activation>
+      <properties>
+        <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
+      </properties>
+    </profile>
+  </profiles>
+
+</project>
